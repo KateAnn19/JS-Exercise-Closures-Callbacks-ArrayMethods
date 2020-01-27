@@ -48,8 +48,9 @@ function processFirstItem(stringList, callback) {
  * [2] Invoking `processLength` passing `[]` and `(num) => "There are " + num`,
  * should return "There are 0".
 */
-function processLength(/* CODE HERE */) {
-  /* CODE HERE */
+function processLength(list, callback) {
+  let listLength= list.length;
+  return callback(listLength);
 }
 
 /**
@@ -66,8 +67,9 @@ function processLength(/* CODE HERE */) {
  * Invoking `processLastItem` passing `['foo', 'bar']` and `(str) => str + str`,
  * should return 'barbar'.
 */
-function processLastItem(/* CODE HERE */) {
-  /* CODE HERE */
+function processLastItem(stringList, callback) {
+  let lastElement = stringList[stringList.length -1];
+  return callback(lastElement);
 }
 
 /**
@@ -87,8 +89,12 @@ function processLastItem(/* CODE HERE */) {
  * [2] Invoking `processSum` passing `[]` and `(num) => num + 1000`,
  * should return 1000.
 */
-function processSum(/* CODE HERE */) {
-  /* CODE HERE */
+function processSum(numberList, callback) {
+  let sum = 0;
+  for(let i = 0 ; i < numberList.length ; i++){
+    sum += numberList[i];
+  }
+  return callback(sum);
 }
 
 /**
@@ -109,8 +115,9 @@ function processSum(/* CODE HERE */) {
  * [2] Invoking `processProduct` passing 25 and 0 and `(num) => num + 1000`,
  * should return 1000.
 */
-function processProduct(/* CODE HERE */) {
-  /* CODE HERE */
+function processProduct(num1, num2, callback) {
+  let product = num1 * num2;
+  return callback(product);
 }
 
 /**
@@ -133,9 +140,16 @@ function processProduct(/* CODE HERE */) {
  * "lady gaga" and `['foo', 'bar']` and `(bool) => bool ? 'nice!' : 'sad'`,
  * should return "sad".
 */
-function processContains(/* CODE HERE */) {
-  /* CODE HERE */
-}
+function processContains(item, list, callback) {
+  let itemPresent = false;
+  for(let i = 0 ; i < list.length ; i++){
+    if(item === list[i]){
+        itemPresent = true;
+        return callback(itemPresent);
+    }
+  }
+  return callback(itemPresent);
+};
 
 /**
  * ### Challenge `processDuplicateFree`
@@ -156,9 +170,17 @@ function processContains(/* CODE HERE */) {
  * [2] Invoking `processDuplicateFree` passing `[1,1,2,2,3]` and `(arr) => arr.length`,
  * should return 3.
 */
-function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */) {
-  /* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */
-}
+function processDuplicateFree(list, callback) {
+  let uniqueArray = [];
+  for(let i = 0 ; i < list.length ; i++){
+    if(uniqueArray.indexOf(list[i]) === -1){
+      uniqueArray.push(list[i]);
+    }
+  }
+  return callback(uniqueArray);
+};
+
+
 
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
