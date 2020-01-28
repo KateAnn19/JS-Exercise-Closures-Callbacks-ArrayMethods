@@ -264,8 +264,15 @@ return peopleNeedingSize;
  * @param runners array of runners like the one inside the /data/runners.js file.
  * @returns a number which is the sum of the donations by all runners.
 */
-function tallyUpDonations(/* CODE HERE */) {
-  /* CODE HERE */
+
+function sum (acc, val){
+  return acc + val.donation;
+}
+
+function tallyUpDonations(runners) {
+        let total = 0;
+        total = runners.reduce(sum, 0);
+        return total;
 }
 
 /////////////// CLOSURES ///////////////
@@ -286,12 +293,18 @@ function tallyUpDonations(/* CODE HERE */) {
 */
 function counterMaker() {
   // BROKEN CODE STARTS
-  const count = 0;
-  function counter() {
-    ++count
+  let count = 0;
+  return function() {
+    count++;
+    return count - 1;
   }
-  // BROKEN CODE ENDS
-}
+};
+
+const newCounter = counterMaker();
+console.log(newCounter());
+console.log(newCounter());
+console.log(newCounter());
+//console.log(newCounter());
 
 /**
  * ### Challenge `counterMakerWithLimit`
@@ -313,9 +326,20 @@ function counterMaker() {
  * counter() // should return 0
  * etc
 */
-function counterMakerWithLimit(/* CODE HERE */) {
-  /* CODE HERE */
-}
+
+function counterMakerWithLimit(limit) {
+  // BROKEN CODE STARTS
+  let count = 0;
+  return function() {
+    if(count > limit){
+      count = 0;
+    }
+    count++;
+    return count - 1;
+  }
+};
+const counter = counterMakerWithLimit(3);
+
 
 /////////////// END OF CHALLENGE ///////////////
 /////////////// END OF CHALLENGE ///////////////
