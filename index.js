@@ -265,13 +265,11 @@ return peopleNeedingSize;
  * @returns a number which is the sum of the donations by all runners.
 */
 
-function sum (acc, val){
-  return acc + val.donation;
-}
-
 function tallyUpDonations(runners) {
         let total = 0;
-        total = runners.reduce(sum, 0);
+        total = runners.reduce(function(acc, val){
+          return acc + val.donation;
+        }, 0);
         return total;
 }
 
@@ -339,6 +337,22 @@ function counterMakerWithLimit(limit) {
   }
 };
 const counter = counterMakerWithLimit(3);
+
+//another way to do this problem: 
+
+// counterMakerWithLimit(maxValue) {
+//   let count = -1;
+//   return function counter() {
+//     if(count === maxValue){
+//       count = 0;
+//     }
+//     else{
+//       ++count;
+//     }
+//     return count;
+//   }
+// }
+
 
 
 /////////////// END OF CHALLENGE ///////////////
